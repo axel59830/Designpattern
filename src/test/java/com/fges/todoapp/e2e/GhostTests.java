@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(Parameterized.class)
+
 public class GhostTests {
 
     /**

@@ -16,6 +16,7 @@ public class App {
         CommandLineParser parser = new DefaultParser();
 
         cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
+        cliOptions.addOption("d", "done", false, "Display only done todos");
 
         CommandLine cmd;
         try {
@@ -26,6 +27,7 @@ public class App {
         }
 
         String fileName = cmd.getOptionValue("s");
+        boolean showDone = cmd.hasOption("d");
 
         List<String> positionalArgs = cmd.getArgList();
         if (positionalArgs.isEmpty()) {
@@ -36,7 +38,7 @@ public class App {
         String command = positionalArgs.get(0);
 
         TodoManager todoManager = new TodoManager(fileName);
-        todoManager.executeCommand(command, positionalArgs);
+        todoManager.executeCommand(command, positionalArgs, showDone);
 
         System.err.println("Done.");
         return 0;

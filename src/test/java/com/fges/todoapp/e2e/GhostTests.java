@@ -84,9 +84,8 @@ public class GhostTests {
 
         return new ExecOutput(
                 sequence,
-                Arrays.stream(sout.toString().split("\n")).toList(),
-                exitOutput
-        );
+                Arrays.stream(sout.toString().split("\n")).map(String::trim).toList(),
+                exitOutput);
     }
 
     private static List<ExecOutput> getApiExecOutput(String tpName) throws IOException {

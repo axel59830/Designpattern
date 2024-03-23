@@ -1,3 +1,5 @@
+// TodoManager.java
+
 package com.fges.todoapp;
 
 import java.io.IOException;
@@ -16,7 +18,13 @@ public class TodoManager {
                 System.err.println("Missing TODO name");
             } else {
                 String todo = positionalArgs.get(1);
-                fileHandler.insertTodo(todo);
+                if (fileHandler.getFilePath().toString().endsWith(".json")) {
+                    fileHandler.insertTodo(todo);
+                } else if (fileHandler.getFilePath().toString().endsWith(".csv")) {
+                    fileHandler.insertTodoCSV(todo);
+                } else {
+                    System.err.println("Unsupported file format for inserting todos");
+                }
             }
         }
 
@@ -27,5 +35,9 @@ public class TodoManager {
                 fileHandler.listTodos();
             }
         }
+    }
+
+    public void migrateTodos(String outputFileName) throws IOException {
+        fileHandler.migrateTodos(outputFileName);
     }
 }

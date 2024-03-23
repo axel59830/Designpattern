@@ -45,4 +45,33 @@ Personnellement, j'ai rencontré des difficultés lors de la mise en place des t
 
 ## Points Positifs
 
-Un aspect positif a été la facilité de la mise en place avec GitHub. Bien que la collaboration avec GitHub puisse parfois être compliqué, l'utilisation d'IntelliJ a rendu le processus de push sur GitHub très pratique.
+Un aspect positif a été la facilité de la mise en place avec GitHub. Bien que la collaboration avec GitHub puisse parfois être compliqué, l'utilisation d'IntelliJ a rendu le processus de push sur GitHub très pratique.  
+
+---
+
+## Améliration du code
+
+Dans un premier temps, j'ai voulu améliorer la structure de mon programme en fonction du retour reçu par mail.  
+Ensuite je me devais de réparer les erreurs liés aux GhostTests mais je n'ai pas réussi donc j'ai pris la decission de faire un gitclone de mon ancien projet.  
+Ce qui est la raison d'aucun commit cette semaine là (car mon code ne fonctionné plus).  
+
+## Ajout du de la création d'un fichier csv ou json
+
+Il y à maintenant la possibilité de créer un fichier json ou un fichier csv.
+
+## Migrate 
+
+J'aimerais faire en sorte qu'il soit possible d'ajouter le contenu d'un fichier à un autre sans l'écrasé, j'ai d'abord fait en sorte que ca copie le contenu mais j'ai eu des problèmes de syntaxe.
+
+
+## Future du projet
+
+Je pense qu'il serait intéressant de mettre en place un système de lecture d'un fichier car dans mon cas ils sont tous rédigés sous format json
+
+---
+
+## Ressenti personnel
+
+Globalement j'ai plutôt adhéré au projet, même si sans le cacher j'aurais parfois aimé avoir un peu plus de liberté.
+Après reflexion je pense que pour vos futures exercices il serait pourquoi pas intérresant pour les élèves de travailer sur un mod minecraft comme vous le proposez en cours car en général les étudiants s'investissent plus quand le projet leur tient à coeur.
+Je vous remercie pour ce projet.

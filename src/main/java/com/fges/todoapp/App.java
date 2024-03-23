@@ -1,3 +1,5 @@
+// App.java
+
 package com.fges.todoapp;
 
 import org.apache.commons.cli.*;
@@ -17,6 +19,7 @@ public class App {
 
         cliOptions.addRequiredOption("s", "source", true, "File containing the todos");
         cliOptions.addOption("d", "done", false, "Display only done todos");
+        cliOptions.addOption("o", "output", true, "Output file for migrate command");
 
         CommandLine cmd;
         try {
@@ -26,9 +29,6 @@ public class App {
             return 1;
         }
 
-        String fileName = cmd.getOptionValue("s");
-        boolean showDone = cmd.hasOption("d");
-
         List<String> positionalArgs = cmd.getArgList();
         if (positionalArgs.isEmpty()) {
             System.err.println("Missing Command");
@@ -37,10 +37,23 @@ public class App {
 
         String command = positionalArgs.get(0);
 
-        TodoManager todoManager = new TodoManager(fileName);
-        todoManager.executeCommand(command, positionalArgs, showDone);
+        if (command.equals("migrate")) {
+            MigrateCommand.execute(cmd);
+        } else {
+            executeOtherCommands(cmd, positionalArgs);
+        }
 
         System.err.println("Done.");
         return 0;
+    }
+
+    private static void executeOtherCommands(CommandLine cmd, List<String> positionalArgs) throws IOException {
+        String fileName = cmd.getOptionValue("s");
+        boolean showDone = cmd.hasOption("d");
+
+        String command = positionalArgs.get(0);
+
+        TodoManager todoManager = new TodoManager(fileName);
+        todoManager.executeCommand(command, positionalArgs, showDone);
     }
 }

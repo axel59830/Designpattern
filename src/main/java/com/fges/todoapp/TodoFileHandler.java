@@ -1,3 +1,5 @@
+// TodoFileHandler.java
+
 package com.fges.todoapp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,9 +10,11 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -45,6 +49,17 @@ public class TodoFileHandler {
         }
     }
 
+    public void insertTodoCSV(String todo) throws IOException {
+        if (filePath.toString().endsWith(".csv")) {
+            try (BufferedWriter writer = Files.newBufferedWriter(filePath, StandardOpenOption.APPEND)) {
+                writer.write(todo);
+                writer.newLine();
+            }
+        } else {
+            System.err.println("Unsupported file format for inserting todos");
+        }
+    }
+
     public void listTodos() throws JsonProcessingException {
         if (filePath.toString().endsWith(".json")) {
             // Affichage des TODOS JSON
@@ -65,6 +80,7 @@ public class TodoFileHandler {
             );
         }
     }
+
     public void listDoneTodos() throws IOException {
         if (filePath.toString().endsWith(".json")) {
             ObjectMapper mapper = new ObjectMapper();
@@ -83,5 +99,26 @@ public class TodoFileHandler {
         } else {
             System.err.println("Unsupported file format for listing done todos");
         }
+    }
+
+    public void migrateTodos(String outputFileName) throws IOException {
+        // Assuming migration means creating a CSV file with the same content
+        if (filePath.toString().endsWith(".json")) {
+            String[] lines = fileContent.split("\n");
+            Path outputPath = Path.of(outputFileName);
+            try (BufferedWriter writer = Files.newBufferedWriter(outputPath)) {
+                for (String line : lines) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+            System.out.println("Migration completed.");
+        } else {
+            System.err.println("Unsupported file format for migration");
+        }
+    }
+
+    public Path getFilePath() {
+        return filePath;
     }
 }

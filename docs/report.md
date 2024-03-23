@@ -66,7 +66,7 @@ J'aimerais faire en sorte qu'il soit possible d'ajouter le contenu d'un fichier 
 
 ## Future du projet
 
-Je pense qu'il serait intéressant de mettre en place un système de lecture d'un fichier car dans mon cas ils sont tous rédigés sous format json
+Je pense qu'il serait intéressant de mettre en place un système de lecture d'un fichier car dans mon cas ils sont tous rédigés sous format json.
 
 ---
 
